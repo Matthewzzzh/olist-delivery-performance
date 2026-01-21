@@ -1,5 +1,12 @@
 # Olist E-Commerce Data Analysis
 
+## Dashboard Preview
+
+![Executive Summary](screenshots/page1_executive_summary.pdf)
+![Customer Experience](screenshots/page2_customer_experience.pdf)
+![Revenue Impact](screenshots/page3_revenue_impact.pdf)
+
+
 ## Project Overview
 This project analyzes Brazilian e-commerce order data from Olist to understand regional sales performance, delivery efficiency, customer experience, and potential revenue risks.
 
