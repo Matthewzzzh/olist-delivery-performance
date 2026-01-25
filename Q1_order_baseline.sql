@@ -1,21 +1,17 @@
 /*
-Purpose:
-  - Monthly delivered orders and payment-based revenue trend, including MoM change and MoM growth %.
+-- Revenue proxy: SUM(gmv) over delivered orders.
+-- Note:
+-- Early months may contain delivered orders with very low or zero GMV
+-- due to promotions, discounts, or incomplete commercial activity,
+-- which can result in 0 revenue and abnormal MoM values.
 
-Definitions:
-  - Revenue proxy: SUM(payment_total) over delivered orders.
-  - MoM change: revenue - LAG(revenue).
-  - MoM growth %: (revenue - LAG(revenue)) / LAG(revenue).
-
-Assumptions:
-  - Delivered orders only.
 */
 
 WITH monthly AS (
   SELECT
     order_month,
     COUNT(*) AS monthly_orders,
-    SUM(payment_total) AS monthly_revenue
+    SUM(gmv) AS monthly_revenue
   FROM analytics.fct_orders
   WHERE order_status = 'delivered'
   GROUP BY 1

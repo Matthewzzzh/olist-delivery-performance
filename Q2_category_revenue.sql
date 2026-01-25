@@ -1,28 +1,19 @@
 /*
-Q2 – Revenue Contribution by Product Category
+Q2 - Revenue Contribution by Product Category
 
 Purpose:
-  - Analyze how total delivered revenue is distributed across product categories.
-  - Identify top revenue-driving categories and quantify their contribution share.
+- Measure how delivered merchandise revenue is distributed across product categories.
+- Identify top revenue-driving categories and quantify contribution share.
 
-Business Definitions:
-  - Category revenue: Sum of item-level price for delivered orders within each category.
-  - Total revenue: Sum of item-level price across all delivered items.
-  - Revenue share: Category revenue divided by total revenue.
+Metric definitions (project-wide):
+- Revenue = merchandise value (SUM(oi.price)) for delivered orders only.
+- Shipping/freight and payment_total are excluded from revenue.
 
-Methodological Rationale:
-  - Item-level revenue is used instead of order-level revenue to avoid double counting,
-    since a single order may contain items from multiple product categories.
-  - This ensures that each unit of revenue is attributed to exactly one category,
-    and that category shares sum to 100%.
-
-Output:
-  - category
-  - category_revenue
-  - total_revenue
-  - revenue_share
-  - delivered_orders
+Notes:
+- delivered_orders = number of distinct delivered orders that contain at least one item in the category.
+  This metric is NOT additive across categories (one order can include multiple categories).
 */
+
 
 
 WITH base AS (
